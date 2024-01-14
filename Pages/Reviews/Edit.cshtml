@@ -1,0 +1,54 @@
+﻿@page
+@model FeedbackApp.Pages.Reviews.EditModel
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Review.Comment" class="control-label"></label>
+                <input asp-for="Review.Comment" class="form-control" />
+                <span asp-validation-for="Review.Comment" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Review.FoodRating" class="control-label">Food Rating</label>
+                <input asp-for="Review.FoodRating" class="form-control" type="number" min="1" max="5" />
+                <span asp-validation-for="Review.FoodRating" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Review.ServiceRating" class="control-label">Service Rating</label>
+                <input asp-for="Review.ServiceRating" class="form-control" type="number" min="1" max="5" />
+                <span asp-validation-for="Review.ServiceRating" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Review.AtmosphereRating" class="control-label">Atmosphere Rating</label>
+                <input asp-for="Review.AtmosphereRating" class="form-control" type="number" min="1" max="5" />
+                <span asp-validation-for="Review.AtmosphereRating" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
+

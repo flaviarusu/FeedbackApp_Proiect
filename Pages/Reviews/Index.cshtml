@@ -1,0 +1,68 @@
+﻿@page
+@model FeedbackApp.Pages.Reviews.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+    ViewData["RequireAuth"] = true;
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Review[0].Comment)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Review[0].FoodRating)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Review[0].ServiceRating)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Review[0].AtmosphereRating)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Review[0].DatePosted)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Review[0].Client)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Review)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Comment)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FoodRating)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ServiceRating)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AtmosphereRating)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DatePosted)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Client.ClientId)
+                </td>
+                <td>
+                    <a asp-page="./Edit" asp-route-id="@item.ReviewId">Edit</a> |
+                    <a asp-page="./Details" asp-route-id="@item.ReviewId">Details</a> |
+                    <a asp-page="./Delete" asp-route-id="@item.ReviewId">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
